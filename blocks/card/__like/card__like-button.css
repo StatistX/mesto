@@ -11,5 +11,6 @@
 }
 
 .card__like-button:active {
-  opacity: 0.4;
+  opacity: 1;
+  background: url('../../../images/like-active-ico.svg') center no-repeat;
 }
