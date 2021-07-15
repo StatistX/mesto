@@ -3,7 +3,6 @@
   height: 24px;
   cursor: pointer;
   border: 1px solid white;
-  align-self: end;
   background: url('../../../images/edit-ico.svg') center no-repeat;
   align-self: center;
 }
