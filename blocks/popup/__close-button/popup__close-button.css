@@ -1,0 +1,19 @@
+.popup__close-button {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: url(../../../images/close-ice.svg) center / cover no-repeat;
+  top: -36px;
+  right: -32px;
+  cursor: pointer;
+}
+
+@media (max-width: 767px) {
+  .popup__close-button {
+    width: 20px;
+    height: 20px;
+    top: -28px;
+    right: 0px;
+  }
+}
