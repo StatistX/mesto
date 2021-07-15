@@ -22,10 +22,10 @@
         <section class="profile">
           <img src="./images/avatar.jpg" alt="Аватар" class="profile__avatar">
           <div class="profile__info">
-            <div class="profile__name">
+            <h1 class="profile__name">
               Жак-Ив Кусто
-              <button class="profile__edit-button"></button>
-            </div>
+            </h1>
+            <button class="profile__edit-button"></button>
             <p class="profile__description">
               Исследователь океана
             </p>
@@ -36,7 +36,7 @@
           <article class="card">
             <img src="./images/unsplash.png" alt="" class="card__image">
             <div class="card__description">
-              <p class="card__text">Карачаевск</p>
+              <p class="card__text">Карачаево-Черкессия</p>
               <button class="card__like-button"></button>
             </div>
           </article>
@@ -79,7 +79,19 @@
         </p>
       </footer>
     </div>
+    <div class="popup">
+      <div class="popup__container">
+        <button class="popup__close-button"></button>
+        <h2 class="popup__title">
+          Редактировать профиль
+        </h2>
+        <input type="text" placeholder="Введите имя" class="popup__input popup__input_type_name">
+        <input type="text" placeholder="Расскажите о себе" class="popup__input popup__input_type_description">
+        <button class="popup__save-button">Сохранить</button>
+      </div>
+    </div>
   </div>
+  <script src="./script.js"></script>
 </body>
 
 </html>
