@@ -12,3 +12,11 @@
     width: 100%;
   }
 }
+
+.profile__add-button:hover {
+  opacity: 0.8;
+}
+
+.profile__add-button:active {
+  opacity: 0.4;
+}

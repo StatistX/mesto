@@ -3,4 +3,13 @@
   height: 19px;
   border: none;
   background: url('../../../images/like-ico.svg') center no-repeat;
+  cursor: pointer;
+}
+
+.card__like-button:hover {
+  opacity: 0.8;
+}
+
+.card__like-button:active {
+  opacity: 0.4;
 }
