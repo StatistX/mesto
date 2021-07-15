@@ -1,0 +1,11 @@
+.popup__form {
+  display: flex;
+  flex-direction: column;
+  min-height: 196px;
+}
+
+@media (max-width: 767px) {
+  .popup__form {
+    min-height: 186px;
+  }
+}

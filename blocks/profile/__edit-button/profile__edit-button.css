@@ -7,6 +7,14 @@
   align-self: center;
 }
 
+@media (max-width: 767px) {
+  .profile__edit-button {
+    position: absolute;
+    right: -28px;
+    top: 7px;
+  }
+}
+
 @media (max-width: 425px) {
   .profile__edit-button {
     width: 18px;
@@ -15,7 +23,7 @@
 }
 
 .profile__edit-button:hover {
-  opacity: 0.8;
+  opacity: 0.6;
 }
 
 .profile__edit-button:active {
