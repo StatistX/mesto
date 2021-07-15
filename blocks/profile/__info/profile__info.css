@@ -1,12 +1,15 @@
 .profile__info {
+  position: relative;
   display: grid;
   grid-template-columns: minmax(0, max-content) 1fr;
-  gap: 16px;
+  gap: 9px 19px;
   align-self: center;
 }
 
 @media (max-width: 767px) {
   .profile__info {
+    margin-bottom: 33px;
     justify-items: center;
+    gap: 9px 0px;
   }
 }
