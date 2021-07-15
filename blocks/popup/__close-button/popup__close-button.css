@@ -17,3 +17,11 @@
     right: 0px;
   }
 }
+
+.popup__close-button:hover {
+  opacity: 0.8;
+}
+
+.popup__close-button:active {
+  opacity: 0.4;
+}

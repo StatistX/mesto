@@ -16,3 +16,11 @@
     font-size: 14px;
   }
 }
+
+.popup__save-button:hover {
+  opacity: 0.8;
+}
+
+.popup__save-button:active {
+  opacity: 0.6;
+}
