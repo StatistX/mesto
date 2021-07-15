@@ -5,6 +5,7 @@
   border: 1px solid white;
   align-self: end;
   background: url('../../../images/edit-ico.svg') center no-repeat;
+  align-self: center;
 }
 
 @media (max-width: 425px) {

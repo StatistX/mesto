@@ -1,6 +1,8 @@
 .profile__info {
   display: grid;
+  grid-template-columns: minmax(0, max-content) 1fr;
   gap: 16px;
+  align-self: center;
 }
 
 @media (max-width: 767px) {
