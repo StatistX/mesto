@@ -24,12 +24,12 @@
           <h1 class="profile__name">
             Жак-Ив Кусто
           </h1>
-          <button type="button" class="profile__edit-button"></button>
+          <button type="button" class="profile__edit-button" aria-label="Редактировать профиль"></button>
           <p class="profile__description">
             Исследователь океана
           </p>
         </div>
-        <button type="button" class="profile__add-button"></button>
+        <button type="button" class="profile__add-button" aria-label="Добавить место"></button>
       </section>
       <section class="cards">
         <article class="card">
@@ -38,7 +38,7 @@
           </div>
           <div class="card__description">
             <h2 class="card__text">Карачаево-Черкессия</h2>
-            <button type="button" class="card__like-button"></button>
+            <button type="button" class="card__like-button" aria-label="Поставить лайк"></button>
           </div>
         </article>
         <article class="card">
@@ -47,7 +47,7 @@
           </div>
           <div class="card__description">
             <h2 class="card__text">Гора Эльбрус</h2>
-            <button type="button" class="card__like-button"></button>
+            <button type="button" class="card__like-button" aria-label="Поставить лайк"></button>
           </div>
         </article>
         <article class="card">
@@ -56,7 +56,7 @@
           </div>
           <div class="card__description">
             <h2 class="card__text">Домбай</h2>
-            <button type="button" class="card__like-button"></button>
+            <button type="button" class="card__like-button" aria-label="Поставить лайк"></button>
           </div>
         </article>
         <article class="card">
@@ -65,7 +65,7 @@
           </div>
           <div class="card__description">
             <h2 class="card__text">Гора Эльбрус</h2>
-            <button type="button" class="card__like-button"></button>
+            <button type="button" class="card__like-button" aria-label="Поставить лайк"></button>
           </div>
         </article>
         <article class="card">
@@ -74,7 +74,7 @@
           </div>
           <div class="card__description">
             <h2 class="card__text">Домбай</h2>
-            <button type="button" class="card__like-button"></button>
+            <button type="button" class="card__like-button" aria-label="Поставить лайк"></button>
           </div>
         </article>
         <article class="card">
@@ -83,7 +83,7 @@
           </div>
           <div class="card__description">
             <h2 class="card__text">Карачаево-Черкессия</h2>
-            <button type="button" class="card__like-button"></button>
+            <button type="button" class="card__like-button" aria-label="Поставить лайк"></button>
           </div>
         </article>
       </section>
@@ -95,15 +95,15 @@
     </footer>
     <div class="popup">
       <div class="popup__container">
-        <button type="button" class="popup__close-button"></button>
+        <button type="button" class="popup__close-button" aria-label="Закрыть всплывающее окно"></button>
         <h2 class="popup__title">
           Редактировать профиль
         </h2>
-        <form class="popup__form" name="edit-profile">
-          <input name="edit-profile" type="text" placeholder="Имя" class="popup__input popup__input_type_name">
-          <input name="edit-profile" type="text" placeholder="О себе"
+        <form class="popup__form" name="editProfile">
+          <input name="editName" type="text" placeholder="Имя" class="popup__input popup__input_type_name">
+          <input name="editDescription" type="text" placeholder="О себе"
             class="popup__input popup__input_type_description">
-          <button name="edit-profile" type="submit" class="popup__save-button">Сохранить</button>
+          <button name="saveButton" type="submit" class="popup__save-button">Сохранить</button>
         </form>
       </div>
     </div>

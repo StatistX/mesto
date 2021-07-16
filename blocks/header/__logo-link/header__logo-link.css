@@ -1,3 +1,7 @@
+.header__logo-link {
+  transition: opacity .2s;
+}
+
 .header__logo-link:hover {
   opacity: 0.8;
 }
