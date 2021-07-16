@@ -6,6 +6,7 @@
   background: url('../../../images/plus-ico.svg') center no-repeat;
   align-self: center;
   border-radius: 2px;
+  transition: opacity .2s;
 }
 
 @media (max-width: 375px) {

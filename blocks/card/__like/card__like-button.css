@@ -4,6 +4,7 @@
   border: none;
   background: url('../../../images/like-ico.svg') center no-repeat;
   cursor: pointer;
+  transition: all .2s;
 }
 
 .card__like-button:hover {
