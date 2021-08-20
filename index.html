@@ -32,7 +32,7 @@
         <button type="button" class="profile__add-button" aria-label="Добавить место"></button>
       </section>
       <section class="cards">
-        <article class="card">
+        <!-- <article class="card">
           <div class="card__image-box">
             <img src="./images/unsplash.png" alt="Монастырь в горах" class="card__image">
           </div>
@@ -85,7 +85,7 @@
             <h2 class="card__text">Карачаево-Черкессия</h2>
             <button type="button" class="card__like-button" aria-label="Поставить лайк"></button>
           </div>
-        </article>
+        </article> -->
       </section>
     </main>
     <footer class="footer">
@@ -108,6 +108,17 @@
       </div>
     </div>
   </div>
+  <template id="card">
+    <article class="card">
+      <div class="card__image-box">
+        <img src="./images/unsplash.png" alt="Красивое место" class="card__image">
+      </div>
+      <div class="card__description">
+        <h2 class="card__text"></h2>
+        <button type="button" class="card__like-button" aria-label="Поставить лайк"></button>
+      </div>
+    </article>
+  </template>
   <script src="./scripts/script.js"></script>
 </body>
 
