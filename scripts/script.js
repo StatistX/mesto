@@ -1,5 +1,8 @@
+// VARIABLES
+
 const editProfileBtn = document.querySelector('.profile__edit-button'),
   closePopupBtn = document.querySelector('.popup__close-button'),
+  closePopupImgBtn = document.querySelector('.popup-img__close-button'),
   popup = document.querySelector('.popup'),
   nameValue = document.querySelector('.profile__name'),
   descriptionValue = document.querySelector('.profile__description'),
@@ -9,12 +12,12 @@ const editProfileBtn = document.querySelector('.profile__edit-button'),
   cardTemplate = document.querySelector('#card').content,
   cards = document.querySelector('.cards'),
   cardText = document.querySelector('.card__text'),
-  cardImageSrc = document.querySelector('.card__image');
+  cardImageSrc = document.querySelector('.card__image'),
+  popupImg = document.querySelector('.popup-img');
 
-let nameInput = document.querySelector('.popup__input_type_name');
-let descriptionInput = document.querySelector('.popup__input_type_description');
-let popupSaveButton = document.querySelector('.popup__save-button');
-
+let nameInput = document.querySelector('.popup__input_type_name'),
+    descriptionInput = document.querySelector('.popup__input_type_description'),
+    popupSaveButton = document.querySelector('.popup__save-button');
 
 const initialCards = [
   {
@@ -43,39 +46,61 @@ const initialCards = [
   }
 ];
 
-initialCards.map(card => {
-  const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
+// FUNCTIONS
+
+function initCards(card) {
+  const cardElement = cardTemplate.firstElementChild.cloneNode(true);
   cardElement.querySelector('.card__image').src = card.link;
   cardElement.querySelector('.card__image').alt = card.name;
   cardElement.querySelector('.card__text').textContent = card.name;
+
+  cardElement.querySelector('.card__delete-button').addEventListener('click', () => {
+    cardElement.remove();
+  });
+
+  cardElement.querySelector('.card__like-button').addEventListener('click', () => {
+    cardElement.querySelector('.card__like-button').classList.toggle('card__like-button_active');
+  });
+
+  cardElement.querySelector('.card__image').addEventListener('click', () => {
+    popupImg.classList.toggle('popup-img_opened');
+    popupImg.querySelector('.popup-img__image').src = card.link;
+    popupImg.querySelector('.popup-img__image').alt = card.name;
+    popupImg.querySelector('.popup-img__description').textContent = card.name;
+  });
+
   cards.append(cardElement);
-});
+}
 
 function togglePopupClass() {
-  popup.classList.toggle("popup_opened");
-};
+  popup.classList.toggle('popup_opened');
+}
+
+function togglePopupImgClass() {
+  popupImg.classList.toggle('popup-img_opened');
+}
 
 function updateProfileInfo() {
   nameValue.textContent = nameInput.value;
   descriptionValue.textContent = descriptionInput.value;
   togglePopupClass();
-};
+}
 
 function addNewCard() {
-  const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
-  cardElement.querySelector('.card__image').src = descriptionInput.value;
-  cardElement.querySelector('.card__image').alt = nameInput.value;
-  cardElement.querySelector('.card__text').textContent = nameInput.value;
-  cards.append(cardElement);
+  const newCard = {
+    name: nameInput.value,
+    link: descriptionInput.value,
+  };
+
+  initCards(newCard)
+
   togglePopupClass();
-  Array.from(cards.children).map((child, index) => console.log(child, index))
-  
 }
 
 function getProfileInfo() {
   togglePopupClass();
   setPopupInfoProfile();
-};
+}
 
 function submitPopupFormProfile(event) {
   event.preventDefault();
@@ -109,6 +134,10 @@ function setPopupInfoLocation() {
   popupForm.addEventListener('submit', submitPopupFormLocation);
 }
 
+// SCRIPTS
+
+initialCards.forEach(initCards);
+
 addCardBtn.addEventListener('click', () => {
   togglePopupClass();
   setPopupInfoLocation();
@@ -117,3 +146,4 @@ addCardBtn.addEventListener('click', () => {
 editProfileBtn.addEventListener('click', getProfileInfo);
 
 closePopupBtn.addEventListener('click', togglePopupClass);
+closePopupImgBtn.addEventListener('click', togglePopupImgClass);
