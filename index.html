@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./pages/index.css">
-  
+
   <title>Место</title>
 </head>
 
@@ -47,19 +47,34 @@
           Редактировать профиль
         </h2>
         <form class="popup__form" name="editProfile">
-          <input name="editName" type="text" placeholder="Имя" class="popup__input popup__input_type_name">
+          <input name="editName" type="text" placeholder="Имя" class="popup__input">
           <input name="editDescription" type="text" placeholder="О себе"
-            class="popup__input popup__input_type_description">
+            class="popup__input">
           <button name="saveButton" type="submit" class="popup__save-button">Сохранить</button>
         </form>
       </div>
     </div>
 
-    <div class="popup-img">
-      <div class="popup-img__container">
-        <button type="button" class="popup-img__close-button" aria-label="Закрыть всплывающее окно"></button>
-        <img src="" alt="Красивое место" class="popup-img__image">
-        <p class="popup-img__description"></p>
+    <div class="popup">
+      <div class="popup__container">
+        <button type="button" class="popup__close-button" aria-label="Закрыть всплывающее окно"></button>
+        <h2 class="popup__title">
+          Новое место
+        </h2>
+        <form class="popup__form" name="createCard">
+          <input name="editName" type="text" placeholder="Название" class="popup__input">
+          <input name="editLink" type="text" placeholder="Ссылка на картинку"
+            class="popup__input">
+          <button name="createButton" type="submit" class="popup__save-button">Создать</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="popup">
+      <div class="popup__image-container">
+        <button type="button" class="popup__close-button" aria-label="Закрыть всплывающее окно"></button>
+        <img src="" alt="Красивое место" class="popup__image">
+        <p class="popup__image-description"></p>
       </div>
     </div>
 

@@ -1,4 +1,4 @@
-.popup-img__container {
+.popup__image-container {
   position: relative;
   max-width: 75vw;
   max-height: 75vh;
@@ -6,7 +6,7 @@
 }
 
 @media (max-width: 618px) {
-  .popup-img__container {
+  .popup__image-container {
     max-width: 85vw;
   }
 }
