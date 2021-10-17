@@ -1,9 +1,11 @@
 .popup__input {
   border: 1px solid transparent;
   border-bottom: 1px solid rgba(0, 0, 0, .2);
-  padding: 13px 0;
+  padding: 13px 0 13px 4px;
   margin-bottom: 16px;
   font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 @media (max-width: 425px) {

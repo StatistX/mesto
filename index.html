@@ -46,10 +46,17 @@
         <h2 class="popup__title">
           Редактировать профиль
         </h2>
-        <form class="popup__form" name="editProfile">
-          <input name="editName" type="text" placeholder="Имя" class="popup__input">
-          <input name="editDescription" type="text" placeholder="О себе"
-            class="popup__input">
+        <form class="popup__form" name="editProfile" novalidate>
+          <div class="popup__input-field">
+            <input id="profile-name" name="editName" type="text" placeholder="Имя" class="popup__input" required minlength="2"
+              maxlength="40">
+            <span class="popup__input-error profile-name-error"></span>
+          </div>
+          <div class="popup__input-field">
+            <input id="profile-description" name="editDescription" type="text" placeholder="О себе" class="popup__input" required minlength="2"
+              maxlength="200">
+            <span class="popup__input-error profile-description-error"></span>
+          </div>
           <button name="saveButton" type="submit" class="popup__save-button">Сохранить</button>
         </form>
       </div>
@@ -61,10 +68,16 @@
         <h2 class="popup__title">
           Новое место
         </h2>
-        <form class="popup__form" name="createCard">
-          <input name="editName" type="text" placeholder="Название" class="popup__input">
-          <input name="editLink" type="text" placeholder="Ссылка на картинку"
-            class="popup__input">
+        <form class="popup__form" name="createCard" novalidate>
+          <div class="popup__input-field">
+            <input id="place-name" name="editName" type="text" placeholder="Название" class="popup__input" required minlength="2"
+              maxlength="30">
+            <span class="popup__input-error place-name-error"></span>
+          </div>
+          <div class="popup__input-field">
+            <input id="place-email" name="editLink" type="url" placeholder="Ссылка на картинку" class="popup__input" required>
+            <span class="popup__input-error place-email-error"></span>
+          </div>
           <button name="createButton" type="submit" class="popup__save-button">Создать</button>
         </form>
       </div>
@@ -91,7 +104,9 @@
       </div>
     </article>
   </template>
+
   <script src="./scripts/script.js"></script>
+  <script src="./scripts/validate.js"></script>
 </body>
 
 </html>
