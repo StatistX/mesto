@@ -1,62 +1,79 @@
-const showError = (form, input, errorMessage) => {
-  const formError = form.querySelector(`.${input.id}-error`);
-  input.classList.add('popup__input_type_error');
-  formError.textContent = errorMessage;
-  formError.classList.add('popup__input-error_active')
+// FUNCTIONS
+
+const showError = (formItem, inputItem, errorMessage, valiationObj) => {
+
+  const { formInputErrorClass, errorSpanClass, errorElementSelector } = valiationObj;
+
+  const errorElement = formItem.querySelector(`.${inputItem.id}${errorElementSelector}`);
+  inputItem.classList.add(formInputErrorClass);
+  errorElement.textContent = errorMessage;
+  errorElement.classList.add(errorSpanClass);
 };
 
-const hideError = (form, input) => {
-  const errorElement = form.querySelector(`.${input.id}-error`);
-  input.classList.remove('popup__input_type_error');
+const hideError = (formItem, inputItem, valiationObj) => {
+
+  const { formInputErrorClass, errorSpanClass, errorElementSelector } = valiationObj;
+
+  const errorElement = formItem.querySelector(`.${inputItem.id}${errorElementSelector}`);
+  inputItem.classList.remove(formInputErrorClass);
   errorElement.textContent = '';
-  errorElement.classList.remove('popup__input-error_active')
+  errorElement.classList.remove(errorSpanClass)
 };
 
-const checkInputValidity = (form, input) => {
-  if (!input.validity.valid) {
-    showError(form, input, input.validationMessage);
+const checkInputValidity = (inputItem, formItem, valiationObj) => {
+  if (!inputItem.validity.valid) {
+    showError(formItem, inputItem, inputItem.validationMessage, valiationObj);
   } else {
-    hideError(form, input);
+    hideError(formItem, inputItem, valiationObj);
   }
 };
 
 const hasInvalidInput = inputList => {
-  return inputList.some(input => !input.validity.valid)
+  return inputList.some(inputItem => !inputItem.validity.valid)
 };
 
-const toggleButtonState = (inputList, buttonElement) => {
+const toggleButtonState = (inputList, buttonElement, valiationObj) => {
+  const { submitButtonInactiveClass } = valiationObj;
   if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add('popup__save-button_inactive');
+    buttonElement.classList.add(submitButtonInactiveClass);
+    buttonElement.disabled = true;
   } else {
-    buttonElement.classList.remove('popup__save-button_inactive');
+    buttonElement.classList.remove(submitButtonInactiveClass);
+    buttonElement.disabled = false;
   }
-}; 
+};
 
-const setEventListeners = (form) => {
-  const inputList = Array.from(form.querySelectorAll('.popup__input'));
-  const buttonElement = form.querySelector('.popup__save-button');
+const setEventListeners = (formItem, valiationObj) => {
+  const { formInputSelector, submitButtonSelector } = valiationObj;
+  const inputList = Array.from(formItem.querySelectorAll(formInputSelector));
+  const buttonElement = formItem.querySelector(submitButtonSelector);
 
-  toggleButtonState(inputList, buttonElement);
+  toggleButtonState(inputList, buttonElement, valiationObj);
 
-  inputList.forEach((input) => {
-    input.addEventListener('input', () => {
-      checkInputValidity(form, input);
-      toggleButtonState(inputList, buttonElement);
+  inputList.forEach(inputItem => hideError(formItem, inputItem, valiationObj));
+  
+  inputList.forEach(inputItem => {
+    inputItem.addEventListener('input', () => {
+      checkInputValidity(inputItem, formItem, valiationObj);
+      toggleButtonState(inputList, buttonElement, valiationObj);
     });
   });
 };
 
-const enableValidation = () => {
-  const formList = Array.from(document.querySelectorAll('.popup__form'));
+const enableValidation = valiationObj => {
+  const { formSelector } = valiationObj;
 
-  formList.forEach((form) => {
-    form.addEventListener('submit', (evt) => {
+  const formList = Array.from(document.querySelectorAll(formSelector));
+
+  formList.forEach(formItem => {
+    formItem.addEventListener('submit', evt => {
       evt.preventDefault();
     });
 
-    setEventListeners(form);
+    setEventListeners(formItem, valiationObj);
   });
 };
 
-enableValidation();
+// SCRIPTS
 
+enableValidation(valiationObj);

@@ -1,78 +1,34 @@
-// VARIABLES
-
-const editProfileBtn = document.querySelector('.profile__edit-button'),
-  addCardBtn = document.querySelector('.profile__add-button'),
-  popupProfile = document.querySelectorAll('.popup')[0],
-  popupCard = document.querySelectorAll('.popup')[1],
-  popupImg = document.querySelectorAll('.popup')[2],
-  closePopupProfileBtn = popupProfile.querySelector('.popup__close-button'),
-  closePopupCardBtn = popupCard.querySelector('.popup__close-button'),
-  closePopupImgBtn = popupImg.querySelector('.popup__close-button'),
-  profileNameInput = popupProfile.querySelectorAll('.popup__input')[0],
-  profileDescriptionInput = popupProfile.querySelectorAll('.popup__input')[1],
-  cardNameInput = popupCard.querySelectorAll('.popup__input')[0],
-  cardLinkInput = popupCard.querySelectorAll('.popup__input')[1],
-  nameValue = document.querySelector('.profile__name'),
-  descriptionValue = document.querySelector('.profile__description'),
-  cardTemplate = document.querySelector('#card').content,
-  cards = document.querySelector('.cards'),
-  cardText = document.querySelector('.card__text'),
-  cardImageSrc = document.querySelector('.card__image');
-
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
-
 // FUNCTIONS
 
+function closePopupByEscBtn(evt) {
+  if (evt.key === 'Escape') {
+    closePopup();
+  }
+};
+
+function closePopupByClickOutside(evt) {
+  if (evt.target.classList.contains('popup')) {
+    closePopup();
+  }
+};
+
 function openPopup(popup) {
-  const form = popup.querySelector('.popup__form');
-  const inputList = Array.from(form.querySelectorAll('.popup__input'));
-  inputList.forEach((input) =>   hideError(form, input));
-  enableValidation();
-  setEventListeners(form);
+
+  enableValidation(valiationObj);
 
   popup.classList.add('popup_opened');
-  popup.addEventListener('click', e => {
-    if (e.target.classList.contains('popup')) {
-      closePopup(popup);
-    }
-  });
 
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') {
-      closePopup(popup);
-    }
-  });
+  document.addEventListener('click', closePopupByClickOutside);
+  document.addEventListener('keydown', closePopupByEscBtn);
 }
 
-function closePopup(popup) {
-  const form = popup.querySelector('.popup__form');
-  form.reset();
-  popup.classList.remove('popup_opened');
+function closePopup() {
+  const activePopup = document.querySelector('.popup_opened');
+
+  activePopup.classList.remove('popup_opened');
+
+  document.removeEventListener('click', closePopupByClickOutside);
+  document.removeEventListener('keydown', closePopupByEscBtn);
 }
 
 function createCard(card) {
@@ -121,19 +77,24 @@ function addUserCard(event) {
   cardNameInput.value = '';
   cardLinkInput.value = '';
 
-  closePopup(popupCard);
+  closePopup();
 }
 
 function updateProfileInfo(event) {
   event.preventDefault();
   nameValue.textContent = profileNameInput.value;
   descriptionValue.textContent = profileDescriptionInput.value;
-  closePopup(popupProfile);
+  closePopup();
 }
 
 function getProfileInfo() {
   profileNameInput.value = nameValue.textContent.trim();
   profileDescriptionInput.value = descriptionValue.textContent.trim();
+}
+
+function setPlaceCardInfo() {
+  cardNameInput.value = '';
+  cardLinkInput.value = '';
 }
 
 // SCRIPTS
@@ -144,7 +105,11 @@ initialCards.forEach(item => {
   addCard(cards, createCard(item))
 });
 
-addCardBtn.addEventListener('click', () => openPopup(popupCard));
+addCardBtn.addEventListener('click', () => {
+  setPlaceCardInfo();
+  openPopup(popupCard)
+});
+
 popupCard.addEventListener('submit', addUserCard);
 
 editProfileBtn.addEventListener('click', () => {
@@ -154,6 +119,6 @@ editProfileBtn.addEventListener('click', () => {
 
 popupProfile.addEventListener('submit', updateProfileInfo);
 
-closePopupProfileBtn.addEventListener('click', () => closePopup(popupProfile));
-closePopupCardBtn.addEventListener('click', () => closePopup(popupCard));
-closePopupImgBtn.addEventListener('click', () => closePopup(popupImg));
+closePopupProfileBtn.addEventListener('click', closePopup);
+closePopupCardBtn.addEventListener('click', closePopup);
+closePopupImgBtn.addEventListener('click', closePopup);
