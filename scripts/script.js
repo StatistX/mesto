@@ -13,8 +13,12 @@ function closePopupByClickOutside(evt) {
 };
 
 function openPopup(popup) {
+  const { formSelector } = valiationObj;
+  const formItem = popup.querySelector(formSelector);
 
-  enableValidation(valiationObj);
+  if (formItem !== null) {
+    resetValidation(formItem, valiationObj);
+  }
 
   popup.classList.add('popup_opened');
 

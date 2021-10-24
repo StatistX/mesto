@@ -50,8 +50,6 @@ const setEventListeners = (formItem, valiationObj) => {
 
   toggleButtonState(inputList, buttonElement, valiationObj);
 
-  inputList.forEach(inputItem => hideError(formItem, inputItem, valiationObj));
-  
   inputList.forEach(inputItem => {
     inputItem.addEventListener('input', () => {
       checkInputValidity(inputItem, formItem, valiationObj);
@@ -72,6 +70,18 @@ const enableValidation = valiationObj => {
 
     setEventListeners(formItem, valiationObj);
   });
+};
+
+const resetValidation = (formItem, valiationObj) => {
+  const { formInputSelector, submitButtonSelector } = valiationObj;
+  const inputList = Array.from(formItem.querySelectorAll(formInputSelector));
+  const buttonElement = formItem.querySelector(submitButtonSelector);
+
+  inputList.forEach(inputItem => {
+    hideError(formItem, inputItem, valiationObj);
+  });
+  
+  toggleButtonState(inputList, buttonElement, valiationObj);
 };
 
 // SCRIPTS
