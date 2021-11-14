@@ -1,6 +1,6 @@
 // VARIABLES
 
-const editProfileBtn = document.querySelector('.profile__edit-button'),
+export const editProfileBtn = document.querySelector('.profile__edit-button'),
   addCardBtn = document.querySelector('.profile__add-button'),
   popupProfile = document.querySelector('#popup-profile'),
   popupCard = document.querySelector('#popup-card'),
@@ -15,11 +15,11 @@ const editProfileBtn = document.querySelector('.profile__edit-button'),
   nameValue = document.querySelector('.profile__name'),
   descriptionValue = document.querySelector('.profile__description'),
   cardTemplate = document.querySelector('#card').content,
-  cards = document.querySelector('.cards'),
+  cardsContainer = document.querySelector('.cards'),
   cardText = document.querySelector('.card__text'),
   cardImageSrc = document.querySelector('.card__image');
 
-const initialCards = [
+export const initialCards = [
   {
     name: 'Архыз',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
@@ -46,7 +46,7 @@ const initialCards = [
   }
 ];
 
-const valiationObj = {
+export const valiationObj = {
   formSelector: '.popup__form',
   submitButtonSelector: '.popup__save-button',
   formInputSelector: '.popup__input',
