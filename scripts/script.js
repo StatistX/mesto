@@ -1,6 +1,7 @@
 import * as variables from './constants.js';
 import Card from './Card.js';
 import FormValidator from './FormValidator.js';
+import { closePopup, openPopup } from './utils.js';
 
 const {
   initialCards,
@@ -17,47 +18,18 @@ const {
   editProfileBtn,
   closePopupProfileBtn,
   closePopupCardBtn,
-  valiationObj
+  cardTemplate,
+  closePopupImgBtn,
+  profileFormValidator,
+  cardFormValidator,
 } = variables;
 
-
-// POPUP FUNCTIONS
-
-function closePopupByEscBtn(evt) {
-  if (evt.key === 'Escape') {
-    closePopup();
-  }
-};
-
-function closePopupByClickOutside(evt) {
-  if (evt.target.classList.contains('popup')) {
-    closePopup();
-  }
-};
-
-function closePopup() {
-  const activePopup = document.querySelector('.popup_opened');
-
-  activePopup.classList.remove('popup_opened');
-
-  document.removeEventListener('click', closePopupByClickOutside);
-  document.removeEventListener('keydown', closePopupByEscBtn);
-}
-
-function openPopup(popup) {
-  const { formSelector } = valiationObj;
-  const formItem = popup.querySelector(formSelector);
-
-  const formValidator = new FormValidator(valiationObj, formItem);
-  formValidator.enableValidation();
-
-  popup.classList.add('popup_opened');
-
-  document.addEventListener('click', closePopupByClickOutside);
-  document.addEventListener('keydown', closePopupByEscBtn);
-}
-
 // ADDING CARD FUNCTIONS
+
+function createCard(cardData, cardTemplateSelector) {
+  const card = new Card(cardData, cardTemplateSelector);
+  return card.generateCard();
+} 
 
 function addCard(container, cardElement) {
   container.prepend(cardElement);
@@ -65,15 +37,13 @@ function addCard(container, cardElement) {
 
 function addUserCard(event) {
   event.preventDefault();
+
   const newUserCardData = {
     name: cardNameInput.value,
     link: cardLinkInput.value,
   };
 
-  const newCard = new Card(newUserCardData, '#card');
-
-  const cardElement = newCard.generateCard();
-
+  const cardElement = createCard(newUserCardData, cardTemplate);
   addCard(cardsContainer, cardElement);
 
   cardNameInput.value = '';
@@ -105,11 +75,13 @@ function getProfileInfo() {
 
 addCardBtn.addEventListener('click', () => {
   setPlaceCardInfo();
+  cardFormValidator.resetValidation();
   openPopup(popupCard)
 });
 
 editProfileBtn.addEventListener('click', () => {
   getProfileInfo();
+  profileFormValidator.resetValidation();
   openPopup(popupProfile);
 });
 
@@ -118,15 +90,16 @@ popupProfile.addEventListener('submit', updateProfileInfo);
 
 closePopupProfileBtn.addEventListener('click', closePopup);
 closePopupCardBtn.addEventListener('click', closePopup);
+closePopupImgBtn.addEventListener('click', closePopup);
 
 // SCRIPTS
 
 getProfileInfo();
 
-
 initialCards.forEach(item => {
-  const newCard = new Card(item, '#card');
-  const cardElement = newCard.generateCard();
-
+  const cardElement = createCard(item, cardTemplate);
   addCard(cardsContainer, cardElement);
 });
+
+profileFormValidator.enableValidation();
+cardFormValidator.enableValidation(); 
