@@ -20,9 +20,13 @@ const {
   closePopupCardBtn,
   cardTemplate,
   closePopupImgBtn,
-  profileFormValidator,
-  cardFormValidator,
+  validationObj,
+  profileForm,
+  cardForm,
 } = variables;
+
+const profileFormValidator = new FormValidator(validationObj, profileForm);
+const cardFormValidator = new FormValidator(validationObj, cardForm);
 
 // ADDING CARD FUNCTIONS
 

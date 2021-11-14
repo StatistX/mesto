@@ -1,5 +1,3 @@
-import FormValidator from "./FormValidator.js";
-
 // VARIABLES
 
 export const validationObj = {
@@ -31,9 +29,7 @@ export const editProfileBtn = document.querySelector('.profile__edit-button'),
   nameValue = document.querySelector('.profile__name'),
   descriptionValue = document.querySelector('.profile__description'),
   cardsContainer = document.querySelector('.cards'),
-  cardTemplate = '#card',
-  profileFormValidator = new FormValidator(validationObj, profileForm),
-  cardFormValidator = new FormValidator(validationObj, cardForm);
+  cardTemplate = '#card';
 
 export const initialCards = [
   {
