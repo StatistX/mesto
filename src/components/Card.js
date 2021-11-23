@@ -2,9 +2,9 @@ import {
   popupImg,
   popupImgDescription,
   popupImgPicture
-} from './constants.js';
+} from '../constants.js';
 
-import { openPopup } from './utils.js';
+import { openPopup } from '../utils.js';
 
 export default class Card {
   constructor(data, cardSelector) {
