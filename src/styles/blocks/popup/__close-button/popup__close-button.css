@@ -3,7 +3,7 @@
   width: 32px;
   height: 32px;
   border: none;
-  background: url(../../../images/close-ice.svg) center / cover no-repeat;
+  background: url(../../../../assets/images/close-ice.svg) center / cover no-repeat;
   top: -38px;
   right: -40px;
   cursor: pointer;

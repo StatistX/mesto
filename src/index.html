@@ -13,12 +13,12 @@
   <div class="page">
     <header class="header">
       <a href="#logo" class="header__logo-link">
-        <img src="<%=require('../images/header-logo.svg')%>" alt="Логотип" class="header__logo">
+        <img src="<%=require('./assets/images/header-logo.svg')%>" alt="Логотип" class="header__logo">
       </a>
     </header>
     <main class="content">
       <section class="profile">
-        <img src="<%=require('../images/avatar.jpg')%>" alt="Аватар" class="profile__avatar">
+        <img src="<%=require('./assets/images/avatar.jpg')%>" alt="Аватар" class="profile__avatar">
         <div class="profile__info">
           <h1 class="profile__name">
             Жак-Ив Кусто
@@ -74,8 +74,8 @@
             <span class="popup__input-error place-name-error"></span>
           </div>
           <div class="popup__input-field">
-            <input id="place-email" name="editLink" type="url" placeholder="Ссылка на картинку" class="popup__input" required>
-            <span class="popup__input-error place-email-error"></span>
+            <input id="place-url" name="editLink" type="url" placeholder="Ссылка на картинку" class="popup__input" required>
+            <span class="popup__input-error place-url-error"></span>
           </div>
           <button name="createButton" type="submit" class="popup__save-button">Создать</button>
         </form>

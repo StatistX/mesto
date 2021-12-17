@@ -3,7 +3,7 @@
   height: 50px;
   cursor: pointer;
   border: 2px solid white;
-  background: url('../../../images/plus-ico.svg') center no-repeat;
+  background: url('../../../../assets/images/plus-ico.svg') center no-repeat;
   align-self: center;
   border-radius: 2px;
   transition: opacity .2s;
