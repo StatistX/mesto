@@ -9,7 +9,6 @@ export default class PopupWithImage extends Popup {
 
   openPopup = data => {
     super.openPopup();
-    super.setEventListeners();
     this._popupImgPicture.src = data.link;
     this._popupImgPicture.alt = data.name;
     this._popupImgDescription.textContent = data.name;

@@ -11,25 +11,25 @@ export default class FormValidator {
     this._buttonElement = this._formItem.querySelector(this._submitButtonSelector);
   }
 
-  _showError(formItem, inputItem, errorMessage) {
-    const errorElement = formItem.querySelector(`.${inputItem.id}${this._errorElementSelector}`);
+  _showError(inputItem, errorMessage) {
+    const errorElement = this._formItem.querySelector(`.${inputItem.id}${this._errorElementSelector}`);
     inputItem.classList.add(this._formInputErrorClass);
     errorElement.textContent = errorMessage;
     errorElement.classList.add(this._errorSpanClass);
   }
   
-  _hideError(formItem, inputItem) {
-    const errorElement = formItem.querySelector(`.${inputItem.id}${this._errorElementSelector}`);
+  _hideError(inputItem) {
+    const errorElement = this._formItem.querySelector(`.${inputItem.id}${this._errorElementSelector}`);
     inputItem.classList.remove(this._formInputErrorClass);
     errorElement.textContent = '';
     errorElement.classList.remove(this._errorSpanClass)
   }
 
-  _checkInputValidity(inputItem, formItem) {
+  _checkInputValidity(inputItem) {
     if (!inputItem.validity.valid) {
-      this._showError(formItem, inputItem, inputItem.validationMessage);
+      this._showError(inputItem, inputItem.validationMessage);
     } else {
-      this._hideError(formItem, inputItem);
+      this._hideError(inputItem);
     }
   }
 
@@ -64,7 +64,7 @@ export default class FormValidator {
 
   resetValidation() {
     this._inputList.forEach(inputItem => {
-      this._hideError(this._formItem, inputItem);
+      this._hideError(inputItem);
     });
     
     this._toggleButtonState();
